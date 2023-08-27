@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Ubuntu 20.04 配置指南 | Von Brank</title><meta name="author" content="Von Brank"><meta name="copyright" content="Von Brank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近遇到的项目需要在Linux环境下进行 （因为WIndows版openpose的Python接口是坏的） ，由于各类Linux发行版不像Windows那样可以开箱即用，因此写下这篇文章记录Ubuntu 20.04下各种软件和环境的配置过程，方便个人查阅。本文将持续更新。  System 更换镜像源 Linux下的软件通常使用包管理器进行安装，Ubuntu默认的软件镜像源在国外，下载速度经常慢得离">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 20.04 配置指南">
+<meta property="og:url" content="https://vonbrank.github.io/archives/ubuntu-20-04-config/index.html">
+<meta property="og:site_name" content="Von Brank">
+<meta property="og:description" content="最近遇到的项目需要在Linux环境下进行 （因为WIndows版openpose的Python接口是坏的） ，由于各类Linux发行版不像Windows那样可以开箱即用，因此写下这篇文章记录Ubuntu 20.04下各种软件和环境的配置过程，方便个人查阅。本文将持续更新。  System 更换镜像源 Linux下的软件通常使用包管理器进行安装，Ubuntu默认的软件镜像源在国外，下载速度经常慢得离">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg">
+<meta property="article:published_time" content="2021-03-04T04:15:25.000Z">
+<meta property="article:modified_time" content="2023-08-27T05:14:52.109Z">
+<meta property="article:author" content="Von Brank">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg"><link rel="shortcut icon" href="https://vonbrank-images.oss-cn-hangzhou.aliyuncs.com/20230826-Blog-Image/system/vonbrank-profile.jpg"><link rel="canonical" href="https://vonbrank.github.io/archives/ubuntu-20-04-config/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Ubuntu 20.04 配置指南',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-27 13:14:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Von Brank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://vonbrank-images.oss-cn-hangzhou.aliyuncs.com/20230826-Blog-Image/system/vonbrank-profile.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Von Brank"><span class="site-name">Von Brank</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Ubuntu 20.04 配置指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-04T04:15:25.000Z" title="发表于 2021-03-04 12:15:25">2021-03-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-27T05:14:52.109Z" title="更新于 2023-08-27 13:14:52">2023-08-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Ubuntu 20.04 配置指南"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>最近遇到的项目需要在Linux环境下进行 <s>（因为WIndows版openpose的Python接口是坏的）</s> ，由于各类Linux发行版不像Windows那样可以开箱即用，因此写下这篇文章记录Ubuntu 20.04下各种软件和环境的配置过程，方便个人查阅。本文将持续更新。</p>
+<hr>
+<h2 id="System">System</h2>
+<h3 id="更换镜像源">更换镜像源</h3>
+<p>Linux下的软件通常使用包管理器进行安装，Ubuntu默认的软件镜像源在国外，下载速度经常慢得离谱，因此我们需要更换为国内的镜像源。</p>
+<p>我们可以在「设置」-&gt; 「关于」-&gt;「软件和更新」-&gt;「下载自」-&gt;「其他站点」选择一个国内的镜像源，阿里源，淘宝源，清华源都是不错的选择。</p>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nSyGt.md.png" alt="6nSyGt.md.png"></p>
+<h3 id="安装显卡驱动（NVIDIA）">安装显卡驱动（NVIDIA）</h3>
+<p>本人使用的图形处理器是NVIDIA Geforce RTX 2060，然而我们会发现，在「设置」-&gt; 「关于」中「图形」这一栏显示的不是我们的GPU。这是因为Ubuntu默认使用开源的显卡驱动，而非官方驱动，在性能和功能方面还是有些区别，而且无法部署CUDA环境，因此我们还是需要安装官方驱动 <s>（顺便打打游戏）</s>  。</p>
+<p><img src="https://s3.ax1x.com/2021/03/06/6npiQK.md.png" alt="6npiQK.md.png"></p>
+<p>这里提供一种 <strong>较简单</strong> 的安装驱动操作。</p>
+<ul>
+<li>在刚才的界面打开「软件和更新」，然后选择「附加驱动」，在加载出来的驱动列表中选择合适的驱动，然后点击「应用更改」。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6n9ovV.md.png" alt="6n9ovV.md.png"></p>
+<ul>
+<li>安装完成之后，系统会要求重启以加载驱动。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nCZ8I.png" alt="6nCZ8I.png"></p>
+<ul>
+<li>在此之前，会要求你设置密码，记得勾上前面的勾。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nCmxP.png" alt="6nCmxP.png"></p>
+<ul>
+<li>如果你图省事，设为“88888888”即可。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nCMqS.md.png" alt="6nCMqS.md.png"></p>
+<ul>
+<li>重新启动系统，会进入蓝色背景的Perform Mok Management界面，选择「Eroll Mok」。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nPuWR.md.jpg" alt="6nPuWR.md.jpg"></p>
+<ul>
+<li>进入Eroll Mok界面，选择「Continue」。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nPnY9.md.jpg" alt="6nPnY9.md.jpg"></p>
+<ul>
+<li>进入Eroll the Key界面，选择「Yes」。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nPmFJ.md.jpg" alt="6nPmFJ.md.jpg"></p>
+<ul>
+<li>输入安装驱动时设置的密码。</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nP1OK.md.jpg" alt="6nP1OK.md.jpg"></p>
+<ul>
+<li>跳回蓝色背景的Perform Mok Management界面，这次选择第一个「Reboot」</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nPMS1.md.jpg" alt="6nPMS1.md.jpg"></p>
+<p>正常情况下重启之后NVIDIA显卡驱动就成功安装并加载了，可以在终端里输入以下指令验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nPh60.md.png" alt="6nPh60.md.png"></p>
+<p>如果可以成功启动Ubuntu，进入图形界面，输入<code>nvidia-smi</code>却提示错误信息，可能是因为没有Disabale掉Secure Boot，可以在终端输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mokutil --disable-validation</span><br></pre></td></tr></table></figure>
+<p>然后重新启动，在蓝色界面按下任意键，在出现的菜单中，选择第二项改变Secure Boot状态，Disable之，然后boot即可。</p>
+<p>如果之后想重新Enable Secure Boot，只需在终端输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mokutil --enable-validation</span><br></pre></td></tr></table></figure>
+<p>reboot并重复上述操作，把Secure Boot State改为Enable即可。</p>
+<p>回到「设置」-&gt; 「关于」，可以看到，我们的「图形」项已经显示正确了。</p>
+<p><img src="https://s3.ax1x.com/2021/03/06/6nPbtJ.md.png" alt="6nPbtJ.md.png"></p>
+<p>附上实时监测CPU/GPU信息的方法：</p>
+<ul>
+<li>
+<p>CPU：使用htop工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install htop</span><br><span class="line">$ htop</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>GPU：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ watch -n 1 nvidia-smi</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="安装与配置Python">安装与配置Python</h3>
+<p>Ubuntu自带的是Python 3.x ，但某些情况下我们可能还需要使用Python 2.x ，可自行安装：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python</span><br></pre></td></tr></table></figure>
+<p>但是默认情况下要使用Python 2.x就必须输入<code>python</code>，要使用Python 3.x就必须输入<code>python3</code>，我们可以通过以下方法更换Python默认版本：</p>
+<ul>
+<li>
+<p>设置python版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100</span><br><span class="line">sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>切换python版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config python</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>按照提示输入编号即可。</p>
+</li>
+</ul>
+<h3 id="安装与配置Git">安装与配置Git</h3>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install git</span><br></pre></td></tr></table></figure>
+<p>全局初始化用户名和邮箱：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;你的用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;你的邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+<p>用以下命令确认是否输入正确：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list </span><br></pre></td></tr></table></figure>
+<p>输入以下命令开始进行Git与Github的绑定操作：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;你的邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在网页版Github「Settings」-&gt;「SSH and GPG keys」中New一个SSH key，然后在<code>~\.ssh</code>目录下找到<code>id_rsa.pub</code>，复制里面的文本到刚才New SSH key界面的输入框中，点击「Add SSH key」完成绑定。</p>
+<p>在终端中输入以下指令验证是否绑定成功：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>如果返回类似如下信息，即为绑定成功：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi vonbrank! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<h2 id="Software">Software</h2>
+<h3 id="安装与配置Clash">安装与配置Clash</h3>
+<p>clash是在Windows/MacOS/Linux等多平台使用的代理工具，Windows下的clash可以开箱即用，Linux下需要手动配置，流程如下：</p>
+<ul>
+<li>下载clash-Linux<a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases">安装包</a>：</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/07/6KrJsg.md.png" alt="6KrJsg.md.png"></p>
+<ul>
+<li>
+<p>在你喜欢的位置创建一个目录，将安装包放进去，可以修改成一个易于识别的名字，如<code>clash.gz</code>，打开终端输入以下指令解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip clash.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>给予文件执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x clash</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>启动文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>首次启动时clash会在<code>~/.config/clash</code>下自动生成两个文件：Config.yaml 和Country.mmdb。接着关闭clash，开始配置。</p>
+</li>
+<li>
+<p>Country.mmdb为全球IP库，可以实现各个国家的IP信息解析和地理定位，没有这个文件clash无法运行。然而自动生成的文件无法支持clash运行，此处直接提供它的<a target="_blank" rel="noopener" href="https://wws.lanzous.com/isEePmmiwaj">下载地址</a>。</p>
+</li>
+<li>
+<p>编辑Config.yaml文件，其内容为服务器节点等信息，部分服务提供商会提供.yml文件，将其后缀修改为.yaml即可。对于提供订阅链接的服务商，可用以下命令生成Config.yaml文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O Config.yaml &#123;clash订阅地址&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>将得到的Config.yaml 和Country.mmdb文件复制到<code>~/.config/clash</code>目录下替换即可。</p>
+</li>
+<li>
+<p>再次启动clash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./clash</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>接着在「设置」-&gt;「网络」-&gt;「网络代理」,选择「手动」<br>
+将HTTP代理设为: <code>127.0.0.1:7890</code><br>
+将Socks主机设为: <code>127.0.0.1:7891</code></p>
+</li>
+</ul>
+<p><img src="https://s3.ax1x.com/2021/03/07/6KsXB4.md.png" alt="6KsXB4.md.png"></p>
+<ul>
+<li>打开浏览器，访问 <a target="_blank" rel="noopener" href="http://clash.razord.top">http://clash.razord.top</a> 进行节点选择等操作。</li>
+<li>到此为止clash就配置完成了，你可以通过访问 <a target="_blank" rel="noopener" href="https://www.google.com/">https://www.google.com/</a> 来检验是否配置成功</li>
+</ul>
+<p>然而我们目前只能让clash代理浏览器，终端内的<code>git</code>，<code>curl</code>，<code>wget</code>等指令仍然不走clash代理，因此用Git来push代码或用wget来下载海外服务器上的文件仍然很慢，我们可以用 <strong>proxychains4</strong> 来无脑设置代理。</p>
+<ul>
+<li>
+<p>安装proxychains4：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install proxychains4</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置代理信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/proxychains4.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在最后一行加上clash的代理端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socks5 127.0.0.1 7891</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后就可以用proxychains4来代理<code>git</code>，<code>curl</code>，<code>wget</code>等指令了，使用时只需要在这些指令前加上<code>proxychains4</code>即可：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 git <span class="built_in">clone</span> &#123;远程仓库地址&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="安装Typora">安装Typora</h3>
+<h3 id="Hexo多终端工作">Hexo多终端工作</h3>
+<hr>
+<h2 id="Tips">Tips</h2>
+<h3 id="由Linux直接进入bios">由Linux直接进入bios</h3>
+<p>很多时候我们希望重启之后直接进入bios，而不是疯狂按快捷键，可执行以下指令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reboot --firmware-setup</span><br></pre></td></tr></table></figure>
+<h2 id="Issues">Issues</h2>
+<h3 id="Windows、Ubuntu-双系统时间不统一（引用）">Windows、Ubuntu 双系统时间不统一（引用）</h3>
+<p>由于Windows 与类 Unix 系统(Unix/Linux/Mac)看待系统硬件时间的方式是不一样的：</p>
+<ul>
+<li>
+<p>Windows 把计算机硬件时间当作本地时间(local time)，所以在 Windows 系统中显示的时间跟 BIOS 中显示的时间是一样的。</p>
+</li>
+<li>
+<p>类 Unix 系统把计算机硬件时间当作 UTC， 所以系统启动后会在该时间的基础上，加上电脑设置的时区数(比中国就加8)，因此 Ubuntu 中显示的时间总是比 Windows 中显示的时间快 8 小时。</p>
+</li>
+</ul>
+<p>当你在 Ubuntu 中把系统显示的时间设置正确后，计算机硬件时间就变成了在这个时间上减去 8 小时，所以当你切换成 Windows 系统后慢了8小时。</p>
+<p><strong>解决方案</strong> ：在 Ubuntu 中把计算机硬件的时间改成系统显示时间，即禁用 Ubuntu 中的 UTC。在终端输入以下命令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-local-rtc 1 --adjust-system-clock</span><br></pre></td></tr></table></figure>
+<h2 id="请参阅">请参阅</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904149822210056#heading-0">https://juejin.cn/post/6844904149822210056#heading-0</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029#t27">https://blog.csdn.net/sinat_37781304/article/details/82729029#t27</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sueyyyy/p/12424178.html">https://www.cnblogs.com/sueyyyy/p/12424178.html</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://vonbrank.github.io">Von Brank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://vonbrank.github.io/archives/ubuntu-20-04-config/">https://vonbrank.github.io/archives/ubuntu-20-04-config/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://vonbrank.github.io" target="_blank">Von Brank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/deploy-anaconda-on-windows/" title="Anaconda部署与使用指南（Windows）"><img class="cover" src="https://s3.ax1x.com/2021/03/13/6w8xDP.md.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Anaconda部署与使用指南（Windows）</div></div></a></div><div class="next-post pull-right"><a href="/archives/ubuntu-usb-install-uefi/" title="如何将Ubuntu安装到U盘-UEFI引导"><img class="cover" src="https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">如何将Ubuntu安装到U盘-UEFI引导</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/ubuntu-usb-install-uefi/" title="如何将Ubuntu安装到U盘-UEFI引导"><img class="cover" src="https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-28</div><div class="title">如何将Ubuntu安装到U盘-UEFI引导</div></div></a></div><div><a href="/archives/cs231n-assignment1-knn/" title="CS231n | 课程作业 Assignment1 | K近邻算法 KNN"><img class="cover" src="https://z3.ax1x.com/2021/03/21/64GeH0.md.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-22</div><div class="title">CS231n | 课程作业 Assignment1 | K近邻算法 KNN</div></div></a></div><div><a href="/archives/cs231n-preparation/" title="CS231n | 先决条件 Preparation"><img class="cover" src="https://z3.ax1x.com/2021/03/21/64GeH0.md.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-21</div><div class="title">CS231n | 先决条件 Preparation</div></div></a></div><div><a href="/archives/deploy-anaconda-on-windows/" title="Anaconda部署与使用指南（Windows）"><img class="cover" src="https://s3.ax1x.com/2021/03/13/6w8xDP.md.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-13</div><div class="title">Anaconda部署与使用指南（Windows）</div></div></a></div><div><a href="/archives/games-202-assignment-framework-analysis/" title="GAMES 202 作业代码框架剖析"><img class="cover" src="https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fporsche-nvidia-and-epic-games-reveal-the-speed-of-light-for-porsche-911-speedster-concept%2FSpeed_of_Light_Hero_1_1920-1920x873-0006adad2a4df33615d426901e38ae89a7a5d25a.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-23</div><div class="title">GAMES 202 作业代码框架剖析</div></div></a></div><div><a href="/archives/hit-cs31106-explanation-01/" title="C语言答疑-01"><img class="cover" src="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-28</div><div class="title">C语言答疑-01</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://vonbrank-images.oss-cn-hangzhou.aliyuncs.com/20230826-Blog-Image/system/vonbrank-profile.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Von Brank</div><div class="author-info__description">Von Brank, a student from Harbin Institute of Technology, who likes coding, video editing, designing, gaming, and more.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/vonbrank"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/vonbrank" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:vonbrank@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://twitter.com/Von_Brank" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a><a class="social-icon" href="https://steamcommunity.com/id/vonbrank/" target="_blank" title="Steam"><i class="fab fa-steam"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#System"><span class="toc-number">1.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">更换镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%EF%BC%88NVIDIA%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">安装显卡驱动（NVIDIA）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEPython"><span class="toc-number">1.3.</span> <span class="toc-text">安装与配置Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEGit"><span class="toc-number">1.4.</span> <span class="toc-text">安装与配置Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Software"><span class="toc-number">2.</span> <span class="toc-text">Software</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEClash"><span class="toc-number">2.1.</span> <span class="toc-text">安装与配置Clash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Typora"><span class="toc-number">2.2.</span> <span class="toc-text">安装Typora</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.3.</span> <span class="toc-text">Hexo多终端工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">3.</span> <span class="toc-text">Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B1Linux%E7%9B%B4%E6%8E%A5%E8%BF%9B%E5%85%A5bios"><span class="toc-number">3.1.</span> <span class="toc-text">由Linux直接进入bios</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues"><span class="toc-number">4.</span> <span class="toc-text">Issues</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows%E3%80%81Ubuntu-%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%8D%E7%BB%9F%E4%B8%80%EF%BC%88%E5%BC%95%E7%94%A8%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">Windows、Ubuntu 双系统时间不统一（引用）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E5%8F%82%E9%98%85"><span class="toc-number">5.</span> <span class="toc-text">请参阅</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/unity-configurable-cursors-and-raycastable-ui/" title="Unity 可配置鼠标指针与 UI 射线检测"><img src="https://gamedevbeginner.com/wp-content/uploads/MouseWorldPosition.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity 可配置鼠标指针与 UI 射线检测"/></a><div class="content"><a class="title" href="/archives/unity-configurable-cursors-and-raycastable-ui/" title="Unity 可配置鼠标指针与 UI 射线检测">Unity 可配置鼠标指针与 UI 射线检测</a><time datetime="2023-08-25T11:48:19.000Z" title="发表于 2023-08-25 19:48:19">2023-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/games-202-assignment-framework-analysis/" title="GAMES 202 作业代码框架剖析"><img src="https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fporsche-nvidia-and-epic-games-reveal-the-speed-of-light-for-porsche-911-speedster-concept%2FSpeed_of_Light_Hero_1_1920-1920x873-0006adad2a4df33615d426901e38ae89a7a5d25a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GAMES 202 作业代码框架剖析"/></a><div class="content"><a class="title" href="/archives/games-202-assignment-framework-analysis/" title="GAMES 202 作业代码框架剖析">GAMES 202 作业代码框架剖析</a><time datetime="2023-08-23T07:30:36.000Z" title="发表于 2023-08-23 15:30:36">2023-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/using-ts-checker-in-react-redux-js-project/" title="使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--Sr-QUSUn--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1jf8itjh1lracaaola8c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南"/></a><div class="content"><a class="title" href="/archives/using-ts-checker-in-react-redux-js-project/" title="使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南">使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南</a><time datetime="2022-12-17T07:25:08.000Z" title="发表于 2022-12-17 15:25:08">2022-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/hit-software-construction-review-lecture-03/" title="HIT-软件构造 | 考前讲座 Lecture 03"><img src="https://s2.loli.net/2022/05/01/pZiMB5ED7aHY3G4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HIT-软件构造 | 考前讲座 Lecture 03"/></a><div class="content"><a class="title" href="/archives/hit-software-construction-review-lecture-03/" title="HIT-软件构造 | 考前讲座 Lecture 03">HIT-软件构造 | 考前讲座 Lecture 03</a><time datetime="2022-06-08T09:35:48.000Z" title="发表于 2022-06-08 17:35:48">2022-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/hit-software-construction-java-functional-programming/" title="HIT-软件构造 | Java 函数式编程"><img src="https://s2.loli.net/2022/05/01/pZiMB5ED7aHY3G4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HIT-软件构造 | Java 函数式编程"/></a><div class="content"><a class="title" href="/archives/hit-software-construction-java-functional-programming/" title="HIT-软件构造 | Java 函数式编程">HIT-软件构造 | Java 函数式编程</a><time datetime="2022-06-01T13:38:57.000Z" title="发表于 2022-06-01 21:38:57">2022-06-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Von Brank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C语言答疑-04 | Von Brank</title><meta name="author" content="Von Brank"><meta name="copyright" content="Von Brank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C语言答疑-04 | Audience-120L0213 | By Von Brank">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言答疑-04">
+<meta property="og:url" content="https://vonbrank.github.io/archives/hit-cs31106-explanation-04/index.html">
+<meta property="og:site_name" content="Von Brank">
+<meta property="og:description" content="C语言答疑-04 | Audience-120L0213 | By Von Brank">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg">
+<meta property="article:published_time" content="2020-11-23T10:30:00.000Z">
+<meta property="article:modified_time" content="2023-08-27T05:14:52.105Z">
+<meta property="article:author" content="Von Brank">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="课程笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg"><link rel="shortcut icon" href="https://vonbrank-images.oss-cn-hangzhou.aliyuncs.com/20230826-Blog-Image/system/vonbrank-profile.jpg"><link rel="canonical" href="https://vonbrank.github.io/archives/hit-cs31106-explanation-04/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C语言答疑-04',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-27 13:14:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Von Brank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://vonbrank-images.oss-cn-hangzhou.aliyuncs.com/20230826-Blog-Image/system/vonbrank-profile.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Von Brank"><span class="site-name">Von Brank</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C语言答疑-04</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-23T10:30:00.000Z" title="发表于 2020-11-23 18:30:00">2020-11-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-27T05:14:52.105Z" title="更新于 2023-08-27 13:14:52">2023-08-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-C/">C/C++</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-C/HIT-CS31106-%E8%AF%BE%E7%A8%8B%E7%AD%94%E7%96%91/">HIT-CS31106-课程答疑</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C语言答疑-04"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>C 语言答疑-04</h1>
+<p>​ By Von Brank | 2020/11/23</p>
+<h2 id="目录">目录</h2>
+<blockquote>
+<ul>
+<li>网站推荐</li>
+<li>近期知识梳理</li>
+<li>几道题</li>
+<li>答疑</li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/DJSO81"><img src="https://s3.ax1x.com/2020/11/23/DJSO81.md.jpg" alt="DJSO81.md.jpg"></a></p>
+<h2 id="网站推荐">网站推荐</h2>
+<ul>
+<li>算法可视化：<a target="_blank" rel="noopener" href="http://visualgo.net/zh">visualgo.net/zh</a></li>
+<li>算法学习：<a target="_blank" rel="noopener" href="http://oi-wiki.org">oi-wiki.org</a></li>
+</ul>
+<h2 id="知识点梳理">知识点梳理</h2>
+<h3 id="指针">指针</h3>
+<h4 id="：取地址的运算"><code>&amp;</code>：取地址的运算</h4>
+<ul>
+<li>
+<p><code>scanf(&quot;%d&quot;, &amp;n);</code>里的<code>&amp;</code>是什么</p>
+</li>
+<li>
+<p><code>%p</code>用来输出地址</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;0x%x\n&quot;</span>, &amp;i);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line"><span class="keyword">int</span> p = (<span class="keyword">int</span>)&amp;i;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;0x%x\n&quot;</span>, p);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;i);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>32 位与 64 位的区别</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%lu\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%lu\n&quot;</span>, <span class="keyword">sizeof</span>(&amp;i));</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>&amp;</code>可以用于获得变量的地址，它的操作数必须是变量</p>
+</li>
+<li>
+<p>不能对没有地址的东西取地址</p>
+<p>以下写法是正确的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;i);</span><br></pre></td></tr></table></figure>
+<p>以下写法都是错误的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;(a++));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;(++a));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;(a + b));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="些别的"><code>&amp;</code>些别的</h4>
+<ul>
+<li>
+<p>相邻变量的地址</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n%p\n&quot;</span>, &amp;a, &amp;b);</span><br></pre></td></tr></table></figure>
+<p>C 语言的变量存储在“栈”中</p>
+</li>
+<li>
+<p><code>sizeof</code>一个<code>&amp;</code>的结果</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="keyword">sizeof</span>(&amp;a));</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>数组的地址，首个数组单元的地址，相邻元素的地址</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>];</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, a);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;a[<span class="number">0</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;a[<span class="number">1</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;a[<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="指针变量">指针变量</h4>
+<ul>
+<li>
+<p><code>scanf(&quot;%d&quot;, &amp;n)</code>是什么</p>
+<ul>
+<li><code>scanf</code>函数需要传入一个变量的地址，便于赋值</li>
+<li><code>scanf</code>函数需要对控制串进行处理</li>
+<li><code>scanf</code>函数的内部实现也仅仅是基于 C 语言的基本语法</li>
+</ul>
+</li>
+<li>
+<p>指针变量的定义</p>
+<p>以下代码将<code>i</code>的地址赋给<code>p</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;i;</span><br></pre></td></tr></table></figure>
+<p>以下两种写法意思相同</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line"><span class="keyword">int</span>* p;</span><br></pre></td></tr></table></figure>
+<p>以下写法定义了一个指针变量<code>p</code>和一个<code>int</code>类型的变量<code>q</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p, q;</span><br></pre></td></tr></table></figure>
+<p>以下写法定义了两个指针变量<code>p</code>和<code>q</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p, *q;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>访问地址上的变量*</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;i;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p);</span><br><span class="line">*p = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>指针作为函数参数传入</p>
+<p>比较函数<code>f</code>和<code>g</code>的输出差异</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;k);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">    f(&amp;i);</span><br><span class="line">    g(i);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>&amp;</code>与<code>*</code>互为反作用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;i;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *&amp;i);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, p);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, &amp;*p);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>scanf(&quot;%d&quot;, i);</code>出错的原因</p>
+</li>
+</ul>
+<h4 id="指针与数组">指针与数组</h4>
+<ul>
+<li>
+<p>以下两段代码效果相同</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=start; i&lt;=end; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> start, end;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">100</span>] = &#123;<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">23</span>, <span class="number">29</span>&#125;;</span><br><span class="line">    start = <span class="number">1</span>;</span><br><span class="line">    end = <span class="number">10</span>;</span><br><span class="line">    f(a, start, end);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=start; i&lt;=end; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> start, end;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">100</span>] = &#123;<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">23</span>, <span class="number">29</span>&#125;;</span><br><span class="line">    start = <span class="number">1</span>;</span><br><span class="line">    end = <span class="number">10</span>;</span><br><span class="line">    f(a, start, end);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>以下函数<strong>原型</strong>等价</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> *p, <span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> *, <span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> i)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> [], <span class="keyword">int</span> i)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>数组变量本身就是特殊的指针</p>
+<p>以下操作无需取地址符</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> *p = a;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>数组的单元表达的是变量，需要取地址，如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a == &amp;a[<span class="number">0</span>])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;YES!!!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>[]</code>运算符也可以用于指针，如</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;a;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *p);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, p[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>*</code>也可以用于数组</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>] = &#123;<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">23</span>, <span class="number">29</span>&#125;;</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a[<span class="number">0</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *a);</span><br><span class="line">*a = <span class="number">456</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a[<span class="number">0</span>]);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *a);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>数组变量是常量（const），即<code>int a[]</code>等价于<code>int * const a</code>，因此：</p>
+<p>以下写法是错误的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> b[] = a;</span><br></pre></td></tr></table></figure>
+<p>以下写法是正确的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> *p = a;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="const-指针">const 指针</h4>
+<ul>
+<li>
+<p><code>int * const p = &amp;i;</code>的含义</p>
+<p>表示指针变量<code>p</code>只能指向<code>i</code>的地址</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i, j;</span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p = &amp;i;</span><br><span class="line">*p = <span class="number">123</span>; <span class="comment">//可以</span></span><br><span class="line">p = &amp;j; <span class="comment">//不可以</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>const int *p = &amp;i</code>的含义</p>
+<p>表示不允许通过<code>*p</code>来修改变量的值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i, j;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;i;</span><br><span class="line">*p = <span class="number">123</span>; <span class="comment">//不可以</span></span><br><span class="line">i = <span class="number">456</span>; <span class="comment">//可以</span></span><br><span class="line">p = &amp;j; <span class="comment">//可以</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>分辨以下写法的区别</p>
+<ul>
+<li><code>const int* p = &amp;i;</code>表示不能通过<code>*p</code>来修改变量的值</li>
+<li><code>int const* p = &amp;i;</code>表示不能通过<code>*p</code>来修改变量的值</li>
+<li><code>int *const p = &amp;i;</code>表示不能改变指针变量<code>p</code>指向的变量</li>
+</ul>
+</li>
+<li>
+<p>可以用于防止函数修改指针所指向变量的值或数组的值，保证安全性</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>* a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> b = *a; <span class="comment">//可以</span></span><br><span class="line">    *a = <span class="number">123</span>; <span class="comment">//不可以</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>常量数组</p>
+<p><code>const</code>类型的数组只能使用集成初始化</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="指针的运算">指针的运算</h4>
+<ul>
+<li>
+<p>对于一个指针变量<code>p</code>，<code>p + 1</code>的含义不是让指针的值<code>+1</code>，而是加上<code>sizeof(&lt;指针变量指向的变量类型&gt;)</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s[] = <span class="string">&quot;hello_world&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *p = s;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, p);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, p + <span class="number">1</span>);</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> *q = a;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, q);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, q + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s[] = <span class="string">&quot;hello_world&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *p = s;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *p);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *(p + <span class="number">1</span>));</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> *q = a;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *q);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(q + <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">105</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, a + i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, a + i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>a[i]</code>和<code>*(a + i)</code>完全等价</p>
+</li>
+<li>
+<p>指针变量可以进行加减，但指针的乘除没有意义</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> *p1 = a;</span><br><span class="line"><span class="keyword">int</span> *p2 = &amp;a[<span class="number">7</span>];</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;p1 = %p\n&quot;</span>, p1);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;p2 = %p\n&quot;</span>, p2);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;p2 - p1 = %d\n&quot;</span>, p2 - p1);</span><br></pre></td></tr></table></figure>
+<p><code>*p++</code>表示取出<code>p</code>指向的那个数据，然后将<code>p</code>移动到下一个位置</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> *p = a;</span><br><span class="line"><span class="keyword">while</span>(*p != <span class="number">-1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *p++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="指针使用的其他注意事项">指针使用的其他注意事项</h4>
+<ul>
+<li>
+<p>所有指针的大小都是一样的，32 位程序的指针是 4 字节，64 位是 8 字节</p>
+</li>
+<li>
+<p>为了防止使用出错，指向不同数据类型的指针不能相互赋值，如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = &amp;n;</span><br><span class="line"><span class="keyword">char</span> *q = &amp;c;</span><br><span class="line">p = q;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>void*</code>表示指向未知类型的指针，编译器不知道它指向的是什么数据类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p1 = &amp;n;</span><br><span class="line"><span class="keyword">char</span> *p2 = &amp;c;</span><br><span class="line"><span class="keyword">void</span> *p3;</span><br><span class="line">p3 = p1;</span><br><span class="line">p3 = p2;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>指针也可以做强制类型转换</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = &amp;n;</span><br><span class="line"><span class="keyword">char</span> *q = &amp;c;</span><br><span class="line">p = (<span class="keyword">void</span>*)q;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>指针究竟有什么用</p>
+<ul>
+<li>便于向函数中传入大量数据，如数组作为参数传入</li>
+<li>将数组传入函数后对数组作操作</li>
+<li>函数需要返回一个数组</li>
+<li>用函数修改外部变量的值</li>
+<li>动态内存分配</li>
+</ul>
+</li>
+</ul>
+<h2 id="几道题">几道题</h2>
+<p>关于指针的题没几道，关于链表的倒是有不少（bushi</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://vonbrank.github.io">Von Brank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://vonbrank.github.io/archives/hit-cs31106-explanation-04/">https://vonbrank.github.io/archives/hit-cs31106-explanation-04/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://vonbrank.github.io" target="_blank">Von Brank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C-C/">C/C++</a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/hello-world/" title="Hello World"><img class="cover" src="https://s3.ax1x.com/2021/02/28/69y80J.md.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div><div class="next-post pull-right"><a href="/archives/hit-cs31106-explanation-03/" title="C语言答疑-03"><img class="cover" src="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言答疑-03</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/hit-cs31106-explanation-01/" title="C语言答疑-01"><img class="cover" src="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-28</div><div class="title">C语言答疑-01</div></div></a></div><div><a href="/archives/hit-cs31106-explanation-02/" title="C语言答疑-02"><img class="cover" src="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-07</div><div class="title">C语言答疑-02</div></div></a></div><div><a href="/archives/hit-cs31106-explanation-03/" title="C语言答疑-03"><img class="cover" src="https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-12</div><div class="title">C语言答疑-03</div></div></a></div><div><a href="/archives/book-note-csapp/" title="【阅读笔记】深入理解计算机系统"><img class="cover" src="https://s2.loli.net/2022/01/12/DuW9EMYc274VsvS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">【阅读笔记】深入理解计算机系统</div></div></a></div><div><a href="/archives/std-checker/" title="在Windows下编写C++对拍程序（真随机数）"><img class="cover" src="https://z3.ax1x.com/2021/03/28/cStdW6.md.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-28</div><div class="title">在Windows下编写C++对拍程序（真随机数）</div></div></a></div><div><a href="/archives/visual-studio-code-c-config-windows/" title="Windows下的Visual Studio Code 配置指南（C&#x2F;C++）"><img class="cover" src="https://s3.ax1x.com/2021/02/28/69DKSO.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-11</div><div class="title">Windows下的Visual Studio Code 配置指南（C&#x2F;C++）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://vonbrank-images.oss-cn-hangzhou.aliyuncs.com/20230826-Blog-Image/system/vonbrank-profile.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Von Brank</div><div class="author-info__description">Von Brank, a student from Harbin Institute of Technology, who likes coding, video editing, designing, gaming, and more.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">22</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/vonbrank"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/vonbrank" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:vonbrank@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://twitter.com/Von_Brank" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a><a class="social-icon" href="https://steamcommunity.com/id/vonbrank/" target="_blank" title="Steam"><i class="fab fa-steam"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">C 语言答疑-04</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90"><span class="toc-number">1.2.</span> <span class="toc-text">网站推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">知识点梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-number">1.3.1.</span> <span class="toc-text">指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%9A%E5%8F%96%E5%9C%B0%E5%9D%80%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">&amp;：取地址的运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%9B%E5%88%AB%E7%9A%84"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">&amp;些别的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">指针变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">指针与数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#const-%E6%8C%87%E9%92%88"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">const 指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-number">1.3.1.6.</span> <span class="toc-text">指针的运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%BD%BF%E7%94%A8%E7%9A%84%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.3.1.7.</span> <span class="toc-text">指针使用的其他注意事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E9%81%93%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">几道题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/unity-configurable-cursors-and-raycastable-ui/" title="Unity 可配置鼠标指针与 UI 射线检测"><img src="https://gamedevbeginner.com/wp-content/uploads/MouseWorldPosition.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity 可配置鼠标指针与 UI 射线检测"/></a><div class="content"><a class="title" href="/archives/unity-configurable-cursors-and-raycastable-ui/" title="Unity 可配置鼠标指针与 UI 射线检测">Unity 可配置鼠标指针与 UI 射线检测</a><time datetime="2023-08-25T11:48:19.000Z" title="发表于 2023-08-25 19:48:19">2023-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/games-202-assignment-framework-analysis/" title="GAMES 202 作业代码框架剖析"><img src="https://cdn2.unrealengine.com/Unreal+Engine%2Fblog%2Fporsche-nvidia-and-epic-games-reveal-the-speed-of-light-for-porsche-911-speedster-concept%2FSpeed_of_Light_Hero_1_1920-1920x873-0006adad2a4df33615d426901e38ae89a7a5d25a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GAMES 202 作业代码框架剖析"/></a><div class="content"><a class="title" href="/archives/games-202-assignment-framework-analysis/" title="GAMES 202 作业代码框架剖析">GAMES 202 作业代码框架剖析</a><time datetime="2023-08-23T07:30:36.000Z" title="发表于 2023-08-23 15:30:36">2023-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/using-ts-checker-in-react-redux-js-project/" title="使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--Sr-QUSUn--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1jf8itjh1lracaaola8c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南"/></a><div class="content"><a class="title" href="/archives/using-ts-checker-in-react-redux-js-project/" title="使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南">使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南</a><time datetime="2022-12-17T07:25:08.000Z" title="发表于 2022-12-17 15:25:08">2022-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/hit-software-construction-review-lecture-03/" title="HIT-软件构造 | 考前讲座 Lecture 03"><img src="https://s2.loli.net/2022/05/01/pZiMB5ED7aHY3G4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HIT-软件构造 | 考前讲座 Lecture 03"/></a><div class="content"><a class="title" href="/archives/hit-software-construction-review-lecture-03/" title="HIT-软件构造 | 考前讲座 Lecture 03">HIT-软件构造 | 考前讲座 Lecture 03</a><time datetime="2022-06-08T09:35:48.000Z" title="发表于 2022-06-08 17:35:48">2022-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/hit-software-construction-java-functional-programming/" title="HIT-软件构造 | Java 函数式编程"><img src="https://s2.loli.net/2022/05/01/pZiMB5ED7aHY3G4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HIT-软件构造 | Java 函数式编程"/></a><div class="content"><a class="title" href="/archives/hit-software-construction-java-functional-programming/" title="HIT-软件构造 | Java 函数式编程">HIT-软件构造 | Java 函数式编程</a><time datetime="2022-06-01T13:38:57.000Z" title="发表于 2022-06-01 21:38:57">2022-06-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2022/01/08/aHnR1gNZI75hTd2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Von Brank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

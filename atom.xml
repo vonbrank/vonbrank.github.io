@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Von Brank</title>
+  
+  <subtitle>Empowering the Best</subtitle>
+  <link href="https://vonbrank.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://vonbrank.github.io/"/>
+  <updated>2023-08-27T05:14:52.109Z</updated>
+  <id>https://vonbrank.github.io/</id>
+  
+  <author>
+    <name>Von Brank</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity 可配置鼠标指针与 UI 射线检测</title>
+    <link href="https://vonbrank.github.io/archives/unity-configurable-cursors-and-raycastable-ui/"/>
+    <id>https://vonbrank.github.io/archives/unity-configurable-cursors-and-raycastable-ui/</id>
+    <published>2023-08-25T11:48:19.000Z</published>
+    <updated>2023-08-27T05:14:52.109Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在游戏开发中，使用鼠标指针与场景进行互动是很常见的需求。我们可能需要使用鼠标来选中场景中的物体，为主角选择一个移动目标点，或是一款建造游戏中玩家选择关卡中的某个点来放置建筑等；进一步地我们可能需要让鼠标悬浮在不同物体上时显示不同外观的光标，如鼠标悬浮在敌人上方时将光标显示为</summary>
+      
+    
+    
+    
+    <category term="游戏开发" scheme="https://vonbrank.github.io/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="教程" scheme="https://vonbrank.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="游戏开发" scheme="https://vonbrank.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GAMES 202 作业代码框架剖析</title>
+    <link href="https://vonbrank.github.io/archives/games-202-assignment-framework-analysis/"/>
+    <id>https://vonbrank.github.io/archives/games-202-assignment-framework-analysis/</id>
+    <published>2023-08-23T07:30:36.000Z</published>
+    <updated>2023-08-27T05:14:52.105Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;《GAMES202：高质量实时渲染》是由闫令琪老师开设的计算机图形学进阶课程。相比 GAMES 101，GAMES 202 不仅作业内容的难度更高，其代码框架也更难以理解。由于对代码框架、尤其是 WebGL API 的理解直接影响到完成作业的思路，并且 GAMES 202 </summary>
+      
+    
+    
+    
+    <category term="计算机图形学" scheme="https://vonbrank.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+    
+    <category term="教程" scheme="https://vonbrank.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="计算机图形学" scheme="https://vonbrank.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 TS-Check 针对 React/Redux 项目的渐进式静态检查指南</title>
+    <link href="https://vonbrank.github.io/archives/using-ts-checker-in-react-redux-js-project/"/>
+    <id>https://vonbrank.github.io/archives/using-ts-checker-in-react-redux-js-project/</id>
+    <published>2022-12-17T07:25:08.000Z</published>
+    <updated>2023-08-27T05:14:52.109Z</updated>
+    
+    
+    <summary type="html">渐进式地使用 Typescript 静态检查器为使用 JavaScript 构建的 React/Redux 应用做静态检查</summary>
+    
+    
+    
+    <category term="JavaScript/Typescript" scheme="https://vonbrank.github.io/categories/JavaScript-Typescript/"/>
+    
+    
+    <category term="教程" scheme="https://vonbrank.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Web开发" scheme="https://vonbrank.github.io/tags/Web%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaScript/Typescript" scheme="https://vonbrank.github.io/tags/JavaScript-Typescript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HIT-软件构造 | 考前讲座 Lecture 03</title>
+    <link href="https://vonbrank.github.io/archives/hit-software-construction-review-lecture-03/"/>
+    <id>https://vonbrank.github.io/archives/hit-software-construction-review-lecture-03/</id>
+    <published>2022-06-08T09:35:48.000Z</published>
+    <updated>2023-08-27T05:14:52.109Z</updated>
+    
+    
+    <summary type="html">HIT 软件构造课程考前讲座第 3 节，范围 9-12 章：可复用性、可维护性、健壮性/鲁棒性、正确性与设计模式</summary>
+    
+    
+    
+    <category term="Java/Kotlin" scheme="https://vonbrank.github.io/categories/Java-Kotlin/"/>
+    
+    <category term="HIT-CS32123-考前讲座" scheme="https://vonbrank.github.io/categories/Java-Kotlin/HIT-CS32123-%E8%80%83%E5%89%8D%E8%AE%B2%E5%BA%A7/"/>
+    
+    
+    <category term="教程" scheme="https://vonbrank.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="课程笔记" scheme="https://vonbrank.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Java/Kotlin" scheme="https://vonbrank.github.io/tags/Java-Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HIT-软件构造 | Java 函数式编程</title>
+    <link href="https://vonbrank.github.io/archives/hit-software-construction-java-functional-programming/"/>
+    <id>https://vonbrank.github.io/archives/hit-software-construction-java-functional-programming/</id>
+    <published>2022-06-01T13:38:57.000Z</published>
+    <updated>2023-08-27T05:14:52.109Z</updated>
+    
+    
+    <summary type="html">HIT 软件构造课程 Java 函数式编程笔记</summary>
+    
+    
+    
+    <category term="Java/Kotlin" scheme="https://vonbrank.github.io/categories/Java-Kotlin/"/>
+    
+    
+    <category term="教程" scheme="https://vonbrank.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="课程笔记" scheme="https://vonbrank.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Java/Kotlin" scheme="https://vonbrank.github.io/tags/Java-Kotlin/"/>
+    
+  </entry>
+  
+</feed>
